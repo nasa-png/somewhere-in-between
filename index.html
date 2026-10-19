@@ -1,311 +1,1042 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#101010">
-<title>Somewhere in Between</title>
-<style>
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:#101010;color:#e9e5df;font-family:Georgia,'Times New Roman',serif;line-height:1.7}
-header{padding:25px 7%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #ffffff18;font-family:Arial,sans-serif}
-.logo{letter-spacing:2px;font-size:12px}
-nav a{color:#aaa;text-decoration:none;margin-left:14px;font-size:12px}
-.hero{min-height:78vh;padding:100px 8% 75px;display:flex;flex-direction:column;justify-content:center;background:radial-gradient(ellipse at 70% 40%,#34302c 0%,#191817 35%,#101010 75%)}
-.eyebrow{font:11px Arial,sans-serif;letter-spacing:4px;color:#b6a38b;text-transform:uppercase}
-h1{font-size:clamp(49px,10vw,105px);line-height:1.02;font-weight:normal;letter-spacing:-3px;margin:25px 0}
-  .profile{display:flex;align-items:center;gap:14px;margin-bottom:25px;font:12px Arial,sans-serif;letter-spacing:3px;color:#b8a58d}
-.profile img{width:58px;height:58px;border-radius:50%;object-fit:cover;border:1px solid #b8a58d}
-h1 em{color:#b8a58d}
-.hero p{max-width:430px;color:#aaa;font-size:17px}
-section{padding:75px 8%;border-top:1px solid #ffffff15}
-h2{font-size:34px;font-weight:normal;margin:5px 0 25px}
-.intro{color:#aaa;max-width:530px}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin-top:28px}
-.item{border:1px solid #ffffff20;padding:23px 18px;background:#ffffff04;min-height:125px}
-.item small{font:10px Arial,sans-serif;color:#b6a38b;letter-spacing:2px;text-transform:uppercase}
-.item h3{font-size:20px;font-weight:normal;margin:12px 0 5px}
-.item p{font-size:13px;color:#999;margin:0}
-.quote{font-size:clamp(25px,5vw,43px);line-height:1.4;max-width:700px}
-.quote em{color:#b8a58d}
-footer{padding:35px 8%;color:#777;font:11px Arial,sans-serif;letter-spacing:1px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-@media(max-width:480px){header{padding:20px 5%}nav a{margin-left:8px;font-size:10px}.hero{min-height:70vh;padding:80px 7%}h1{letter-spacing:-2px}.grid{grid-template-columns:1fr}section{padding:55px 7%}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101010">
+
+  <meta name="description" content="Somewhere in Between. A personal archive of films, music, books, questions, and passing thoughts curated by Nasa.">
+
+  <title>Somewhere in Between. | Nasa</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #101010;
+      --surface: #171715;
+      --surface-light: #1e1d1a;
+      --text: #e9e5df;
+      --muted: #99958e;
+      --accent: #b8a58d;
+      --border: rgba(255,255,255,.12);
+      --mono: "DM Mono", monospace;
+      --sans: "Manrope", sans-serif;
+      --serif: "Playfair Display", Georgia, serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 85px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      line-height: 1.8;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: #101010;
+    }
+
+    /* NAVIGATION */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 18px 7%;
+      background: rgba(16,16,16,.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 2px;
+      white-space: nowrap;
+    }
+
+    nav {
+      display: flex;
+      gap: 19px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 1px;
+      transition: color .25s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 82vh;
+      padding: 100px 8%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(16,16,16,.98) 5%, rgba(16,16,16,.82) 48%, rgba(16,16,16,.35) 100%),
+        linear-gradient(0deg, var(--bg), transparent 45%),
+        url("https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&w=1800&q=85") center/cover;
+    }
+
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 35px;
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 3px;
+    }
+
+    .profile img {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid var(--accent);
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3, p {
+      overflow-wrap: anywhere;
+    }
+
+    h1 {
+      max-width: 850px;
+      margin: 25px 0;
+      font-family: var(--serif);
+      font-size: clamp(54px, 10vw, 112px);
+      font-weight: 400;
+      line-height: 1.04;
+      letter-spacing: -3px;
+    }
+
+    h1 em, .quote em {
+      color: var(--accent);
+      font-weight: 400;
+    }
+
+    .hero p {
+      max-width: 460px;
+      color: #c0bbb3;
+      font-size: 15px;
+    }
+
+    .hero-note {
+      margin-top: 30px;
+      color: #88837c;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 2px;
+    }
+
+    /* GENERAL SECTIONS */
+
+    section {
+      padding: 85px 8%;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-heading {
+      max-width: 720px;
+      margin-bottom: 32px;
+    }
+
+    h2 {
+      margin: 8px 0 20px;
+      font-family: var(--serif);
+      font-size: clamp(32px, 5vw, 49px);
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    h3 {
+      font-family: var(--serif);
+      font-weight: 400;
+      line-height: 1.35;
+    }
+
+    .intro {
+      max-width: 600px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 35px;
+    }
+
+    .item {
+      min-width: 0;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      transition: border-color .3s ease, transform .3s ease;
+    }
+
+    .item:hover {
+      transform: translateY(-4px);
+      border-color: rgba(184,165,141,.55);
+    }
+
+    .item img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      filter: brightness(.78) saturate(.72);
+      transition: filter .4s ease, transform .5s ease;
+    }
+
+    .item:hover img {
+      filter: brightness(.95) saturate(.9);
+    }
+
+    .item-content {
+      padding: 23px;
+    }
+
+    .item small {
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .item h3 {
+      margin: 10px 0;
+      font-size: 25px;
+    }
+
+    .item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    .text-card {
+      padding: 26px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .text-card h3 {
+      margin-top: 10px;
+    }
+
+    /* ABOUT */
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1.3fr .7fr;
+      gap: 45px;
+      align-items: center;
+    }
+
+    .about-image {
+      width: 100%;
+      height: 340px;
+      object-fit: cover;
+      filter: brightness(.75) saturate(.65);
+      border: 1px solid var(--border);
+    }
+
+    /* QUOTES */
+
+    .quote {
+      max-width: 850px;
+      margin: 35px 0;
+      font-family: var(--serif);
+      font-size: clamp(27px, 5vw, 47px);
+      line-height: 1.5;
+    }
+
+    .quote-caption {
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* READING */
+
+    .reading-banner {
+      width: 100%;
+      max-height: 360px;
+      object-fit: cover;
+      margin: 30px 0;
+      border: 1px solid var(--border);
+      filter: brightness(.78) saturate(.7);
+    }
+
+    .reading-note {
+      margin-top: 25px;
+      padding: 25px;
+      border-left: 2px solid var(--accent);
+      background: var(--surface);
+      color: var(--muted);
+      font-family: var(--serif);
+      font-size: 19px;
+      font-style: italic;
+    }
+
+    /* SOCIAL LINKS */
+
+    .social-icons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin: 30px 0;
+    }
+
+    .social-icons a {
+      width: 54px;
+      height: 54px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--surface);
+      transition: transform .25s ease, border-color .25s ease;
+    }
+
+    .social-icons a:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+    }
+
+    .social-icons img {
+      width: 23px;
+      height: 23px;
+      object-fit: contain;
+    }
+
+    /* SIGNATURE AND FOOTER */
+
+    .signature {
+      padding: 55px 8% 35px;
+      text-align: center;
+      background: #090909;
+      border-top: 1px solid var(--border);
+    }
+
+    .signature-title {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: 25px;
+    }
+
+    .signature-name {
+      margin-top: 8px;
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 3px;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+      padding: 22px 8%;
+      color: #77716a;
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 1px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 700px) {
+      header {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 16px 6%;
+        gap: 13px;
+      }
+
+      nav {
+        gap: 14px;
+      }
+
+      nav a {
+        font-size: 9px;
+      }
+
+      .hero {
+        min-height: 75vh;
+        padding: 75px 7%;
+        background-position: 58% center;
+      }
+
+      h1 {
+        letter-spacing: -2px;
+      }
+
+      section {
+        padding: 60px 7%;
+      }
+
+      .grid, .about-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .item img {
+        height: 220px;
+      }
+
+      .about-layout {
+        gap: 20px;
+      }
+
+      .about-image {
+        height: 250px;
+      }
+
+      footer {
+        padding: 22px 7%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *, *::before, *::after {
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<header>
-<div class="logo">S.I.B. / PERSONAL ARCHIVE</div>
-<nav><a href="#about">ABOUT</a><a href="#cinema">CINEMA</a><a href="#sound">SOUND</a></nav>
-</header>
-<main>
-<div class="hero">
-  <div class="profile">
-  <img src="IMG_20260830_044210.jpg" alt="Nasa's profile photo">
-  <span>NASA</span>
-  </div>
-<div class="eyebrow">A collection of passing thoughts</div>
-<h1>Somewhere<br>in <em>Between.</em></h1>
-<p>For the films that stay with you, the songs that understand you, and the thoughts that only arrive after midnight.</p>
-</div>
-<section id="about">
-<div class="eyebrow">01 / The idea</div>
-<h2>A little about this place.</h2>
-<p class="intro">Not quite here, not quite there. Just a personal archive of stories, sounds, questions, and moments worth keeping. A small corner of the internet to call my own.</p>
-</section>
-<section id="cinema">
-<div class="eyebrow">02 / On the screen</div>
-<h2>Stories that stay.</h2>
-<div class="grid">
-<div class="item"><small>Crime / Drama</small><h3>The Sopranos</h3><p>Human nature, contradictions, and the things we hide.</p></div>
-<div class="item"><small>Epic / Fantasy</small><h3>Game of Thrones</h3><p>Power, consequence, and the cost of ambition.</p></div>
-<div class="item"><small>Crime / Drama</small><h3>Breaking Bad</h3><p>How far can a person change?</p></div>
-<div class="item"><small>Psychological</small><h3>Shutter Island</h3><p>Some questions are harder than their answers.</p></div>
-<div class="item"><small>Science Fiction</small><h3>Interstellar</h3><p>Time, distance, and what connects us.</p></div>
-<div class="item"><small>Film Journal</small><h3>The Afterthought</h3><p>The best stories don't end at the credits.</p></div>
-</div>
-</section>
-<section id="sound">
-<div class="eyebrow">03 / In the headphones</div>
-<h2>Soundtrack to the in-between.</h2>
-<div class="grid">
-<div class="item"><small>Artist</small><h3>Olivia Rodrigo</h3><p>Stories hidden inside the details.</p></div>
-<div class="item"><small>Artist</small><h3>Michel Jackson</h3><p>Quiet feelings, loud echoes.</p></div>
-<div class="item"><small>Mood</small><h3>Late-night songs</h3><p>For walks with nowhere to go.</p></div>
-<div class="item"><small>Listening note</small><h3>On repeat</h3><p>Some songs feel like a place.</p></div>
-</div>
-</section>
-<section id="thoughts">
-<div class="eyebrow">04 / Notes to self</div>
-<h2>Things I keep thinking about.</h2>
-<p class="quote">“Maybe growing up is learning to live with the things you can't <em>quite explain.</em>”</p>
-<p class="intro">A changing collection of thoughts about time, identity, stories, and everything in between.</p>
-</section>
-<section id="words">
-<div class="eyebrow">05 / The last page</div>
-<h2>Until the next thought.</h2>
-<p class="intro">Still figuring things out. Still collecting stories. Still somewhere in between.</p>
-</section>
-  
-<section id="mind">
-  <div class="eyebrow">06 / Beyond the Surface</div>
-  <h2>More Than What You See.</h2>
-  <p class="intro">
-    I think there is always more to a person than what
-    they choose to show. I'm interested in the details,
-    the contradictions, and the thoughts people rarely
-    put into words.
-  </p>
-  <div class="grid">
-    <div class="item">
-      <small>THE WAY I THINK</small>
-      <h3>Curiosity Over Certainty</h3>
+
+  <header>
+    <div class="logo">S.I.B. / PERSONAL ARCHIVE</div>
+
+    <nav aria-label="Main navigation">
+      <a href="#about">ABOUT</a>
+      <a href="#cinema">CINEMA</a>
+      <a href="#sound">SOUND</a>
+      <a href="#reading">READING</a>
+      <a href="#thoughts">THOUGHTS</a>
+      <a href="#connect">ELSEWHERE</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+
+    <div class="hero">
+      <div class="profile">
+        <img src="IMG_20260830_044210.jpg" alt="Nasa's profile photo">
+        <span>NASA</span>
+      </div>
+
+      <div class="eyebrow">A collection of passing thoughts</div>
+
+      <h1>Somewhere<br>in <em>Between.</em></h1>
+
       <p>
-        I would rather ask a difficult question than
-        settle for an easy answer. Understanding matters
-        more to me than pretending to know everything.
+        For the films that stay with you, the songs that
+        understand you, the books that change your perspective,
+        and the thoughts that only arrive after midnight.
       </p>
+
+      <div class="hero-note">FILMS · MUSIC · BOOKS · THOUGHTS</div>
     </div>
-    <div class="item">
-      <small>THE WAY I SEE LIFE</small>
-      <h3>Comfort in Contradictions</h3>
-      <p>
-        People can be strong and uncertain, hopeful and
-        afraid, all at once. Maybe understanding ourselves
-        begins when we stop trying to be one thing.
+
+    <!-- ABOUT -->
+
+    <section id="about">
+      <div class="eyebrow">01 / The idea</div>
+
+      <div class="about-layout">
+        <div>
+          <h2>A little about this place.</h2>
+
+          <p class="intro">
+            Not quite here, not quite there. Just a personal
+            archive of stories, sounds, questions, and moments
+            worth keeping. A small corner of the internet to
+            call my own.
+          </p>
+
+          <p class="intro">
+            A place for the things that make me think,
+            the details I notice, and the ideas I haven't
+            completely figured out yet.
+          </p>
+        </div>
+
+        <img
+          class="about-image"
+          src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1000&q=85"
+          alt="A quiet landscape beneath a moody sky"
+          loading="lazy"
+        >
+      </div>
+    </section>
+
+    <!-- CINEMA -->
+
+    <section id="cinema">
+      <div class="eyebrow">02 / On the screen</div>
+      <h2>Stories that stay.</h2>
+
+      <p class="intro">
+        Some stories end with the credits. Others follow
+        you home and make you think about them for days.
       </p>
-    </div>
-  </div>
-</section>
 
-<section id="questions">
-  <div class="eyebrow">07 / Questions Without Answers</div>
-  <h2>Things I Think About.</h2>
-  <p class="intro">
-    Not every question needs an immediate answer.
-    Some are worth carrying with you.
-  </p>
-  <div class="grid">
-    <div class="item">
-      <small>IDENTITY</small>
-      <h3>Who Are We, Really?</h3>
-      <p>
-        Are we the person we believe ourselves to be,
-        the person others see, or something in between?
+      <div class="grid">
+
+        <article class="item">
+          <img
+            src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1000&q=85"
+            alt="Cinema seats facing a movie screen"
+            loading="lazy"
+          >
+          <div class="item-content">
+            <small>Crime / Drama</small>
+            <h3>The Sopranos</h3>
+            <p>Human nature, contradictions, and the things we hide.</p>
+          </div>
+        </article>
+
+        <article class="item">
+          <img
+            src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1000&q=85"
+            alt="A dramatic fantasy-like landscape"
+            loading="lazy"
+          >
+          <div class="item-content">
+            <small>Epic / Fantasy</small>
+            <h3>Game of Thrones</h3>
+            <p>Power, consequence, loyalty, and the cost of ambition.</p>
+          </div>
+        </article>
+
+        <article class="item">
+          <img
+            src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1000&q=85"
+            alt="A dark night sky over a distant landscape"
+            loading="lazy"
+          >
+          <div class="item-content">
+            <small>Crime / Drama</small>
+            <h3>Breaking Bad</h3>
+            <p>How far can a person change, and when does the change begin?</p>
+          </div>
+        </article>
+
+        <article class="item">
+          <img
+            src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1000&q=85"
+            alt="Dark ocean waves beneath a muted sky"
+            loading="lazy"
+          >
+          <div class="item-content">
+            <small>Psychological</small>
+            <h3>Shutter Island</h3>
+            <p>Some questions are harder than their answers.</p>
+          </div>
+        </article>
+
+        <article class="item">
+          <img
+            src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=1000&q=85"
+            alt="Earth seen from space"
+            loading="lazy"
+          >
+          <div class="item-content">
+            <small>Science Fiction</small>
+            <h3>Interstellar</h3>
+            <p>Time, distance, and what connects us across both.</p>
+          </div>
+        </article>
+
+        <article class="item">
+          <img
+            src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1000&q=85"
+            alt="A mountain beneath a star-filled night sky"
+            loading="lazy"
+          >
+          <div class="item-content">
+            <small>Film Journal</small>
+            <h3>The Afterthought</h3>
+            <p>The best stories don't end at the credits.</p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- SOUND -->
+
+    <section id="sound">
+      <div class="eyebrow">03 / In the headphones</div>
+      <h2>Soundtrack to the in-between.</h2>
+
+      <p class="intro">
+        Songs for late nights, long thoughts, and feelings
+        that are easier to hear than explain.
       </p>
-    </div>
-    <div class="item">
-      <small>TIME</small>
-      <h3>Does Time Change Us?</h3>
-      <p>
-        Do we become different people, or simply discover
-        parts of ourselves that were always there?
+
+      <div class="grid">
+
+        <article class="item">
+          <img
+            src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1000&q=85"
+            alt="A singer performing on stage"
+            loading="lazy"
+          >
+          <div class="item-content">
+            <small>Artist</small>
+            <h3>Olivia Rodrigo</h3>
+            <p>Stories hidden inside the details.</p>
+          </div>
+        </article>
+
+        <article class="item">
+          <img
+            src="https://images.unsplash.com/photo-1501612780327-45045538702b?auto=format&fit=crop&w=1000&q=85"
+            alt="A live music performance under stage lights"
+            loading="lazy"
+          >
+          <div class="item-content">
+            <small>Artist</small>
+            <h3>Michael Jackson</h3>
+            <p>A sound and a stage presence that became unforgettable.</p>
+          </div>
+        </article>
+
+        <article class="item">
+          <img
+            src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=1000&q=85"
+            alt="The last light of the day across a quiet landscape"
+            loading="lazy"
+          >
+          <div class="item-content">
+            <small>Mood</small>
+            <h3>Late-night songs</h3>
+            <p>For walks with nowhere to go and thoughts that won't settle.</p>
+          </div>
+        </article>
+
+        <article class="item">
+          <img
+            src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=1000&q=85"
+            alt="Audio equipment in a music studio"
+            loading="lazy"
+          >
+          <div class="item-content">
+            <small>Listening note</small>
+            <h3>On repeat</h3>
+            <p>Some songs feel less like music and more like a place.</p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- READING -->
+
+    <section id="reading">
+      <div class="eyebrow">04 / Between the pages</div>
+      <h2>Things worth reading.</h2>
+
+      <p class="intro">
+        Books can be a way out, a way in, or a mirror you
+        weren't expecting to find. This is a place for
+        stories and ideas that leave something behind.
       </p>
-    </div>
-    <div class="item">
-      <small>MEANING</small>
-      <h3>What Makes Life Meaningful?</h3>
-      <p>
-        Is meaning something we find, something we create,
-        or something that exists in the moments we overlook?
+
+      <img
+        class="reading-banner"
+        src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1600&q=85"
+        alt="Rows of books in a quiet library"
+        loading="lazy"
+      >
+
+      <div class="grid">
+
+        <article class="item">
+          <img
+            src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=1000&q=85"
+            alt="Books arranged together"
+            loading="lazy"
+          >
+          <div class="item-content">
+            <small>The reading list</small>
+            <h3>Currently Reading</h3>
+            <p>
+              The books I'm exploring, one page at a time.
+              A few chapters closer to a different perspective.
+            </p>
+          </div>
+        </article>
+
+        <article class="item">
+          <img
+            src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&w=1000&q=85"
+            alt="A stack of books on a wooden table"
+            loading="lazy"
+          >
+          <div class="item-content">
+            <small>The ones that stay</small>
+            <h3>Favorite Books</h3>
+            <p>
+              Stories and ideas worth returning to,
+              even after the final page.
+            </p>
+          </div>
+        </article>
+
+        <article class="item">
+          <img
+            src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1000&q=85"
+            alt="A notebook and pen ready for writing"
+            loading="lazy"
+          >
+          <div class="item-content">
+            <small>Words to remember</small>
+            <h3>Lines Worth Keeping</h3>
+            <p>
+              Passages that say something I've felt
+              but never quite managed to explain.
+            </p>
+          </div>
+        </article>
+
+        <article class="item">
+          <img
+            src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=1000&q=85"
+            alt="Someone reading a book beside a window"
+            loading="lazy"
+          >
+          <div class="item-content">
+            <small>After the last page</small>
+            <h3>Reading Notes</h3>
+            <p>
+              Thoughts, questions, and reflections
+              that begin when the reading ends.
+            </p>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="reading-note">
+        “A book is not just a story you finish.
+        Sometimes it's an idea that keeps unfolding.”
+      </div>
+    </section>
+
+    <!-- THOUGHTS -->
+
+    <section id="thoughts">
+      <div class="eyebrow">05 / Notes to self</div>
+      <h2>Things I keep thinking about.</h2>
+
+      <p class="quote">
+        “Maybe growing up is learning to live with the
+        things you can't quite <em>explain.</em>”
       </p>
-    </div>
-    <div class="item">
-      <small>CONNECTION</small>
-      <h3>Can Anyone Know Us Completely?</h3>
-      <p>
-        How much of ourselves can we share, and how much
-        will always remain ours alone?
+
+      <p class="intro">
+        A changing collection of thoughts about time,
+        identity, stories, and everything in between.
+        Not every thought needs a conclusion.
       </p>
-    </div>
+    </section>
+
+    <!-- THE LAST PAGE -->
+
+    <section id="words">
+      <div class="eyebrow">06 / The last page</div>
+      <h2>Until the next thought.</h2>
+
+      <p class="intro">
+        Still figuring things out. Still collecting stories.
+        Still somewhere in between.
+      </p>
+
+      <img
+        class="reading-banner"
+        src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=1600&q=85"
+        alt="Soft evening light fading across a landscape"
+        loading="lazy"
+      >
+    </section>
+
+    <!-- MIND -->
+
+    <section id="mind">
+      <div class="eyebrow">07 / Beyond the surface</div>
+      <h2>More than what you see.</h2>
+
+      <p class="intro">
+        I think there is always more to a person than what
+        they choose to show. I'm interested in the details,
+        the contradictions, and the thoughts people rarely
+        put into words.
+      </p>
+
+      <div class="grid">
+
+        <div class="text-card">
+          <small class="eyebrow">The way I think</small>
+          <h3>Curiosity Over Certainty</h3>
+          <p class="intro">
+            I would rather ask a difficult question than
+            settle for an easy answer. Understanding matters
+            more to me than pretending to know everything.
+          </p>
+        </div>
+
+        <div class="text-card">
+          <small class="eyebrow">The way I see life</small>
+          <h3>Comfort in Contradictions</h3>
+          <p class="intro">
+            People can be strong and uncertain, hopeful and
+            afraid, all at once. Maybe understanding ourselves
+            begins when we stop trying to be one thing.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- QUESTIONS -->
+
+    <section id="questions">
+      <div class="eyebrow">08 / Questions without answers</div>
+      <h2>Things I think about.</h2>
+
+      <p class="intro">
+        Not every question needs an immediate answer.
+        Some are worth carrying with you.
+      </p>
+
+      <div class="grid">
+
+        <div class="text-card">
+          <small class="eyebrow">Identity</small>
+          <h3>Who Are We, Really?</h3>
+          <p class="intro">
+            Are we the person we believe ourselves to be,
+            the person others see, or something in between?
+          </p>
+        </div>
+
+        <div class="text-card">
+          <small class="eyebrow">Time</small>
+          <h3>Does Time Change Us?</h3>
+          <p class="intro">
+            Do we become different people, or discover
+            parts of ourselves that were always there?
+          </p>
+        </div>
+
+        <div class="text-card">
+          <small class="eyebrow">Meaning</small>
+          <h3>What Makes Life Meaningful?</h3>
+          <p class="intro">
+            Is meaning something we find, something we create,
+            or something hidden in the moments we overlook?
+          </p>
+        </div>
+
+        <div class="text-card">
+          <small class="eyebrow">Connection</small>
+          <h3>Can Anyone Know Us Completely?</h3>
+          <p class="intro">
+            How much of ourselves can we share, and how much
+            will always remain ours alone?
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PERSONAL NOTES -->
+
+    <section id="personal-notes">
+      <div class="eyebrow">09 / Personal notes</div>
+      <h2>A few things I believe.</h2>
+
+      <div class="text-card">
+        <p class="quote">
+          “You don't have to have everything figured out
+          to be moving forward.”
+        </p>
+      </div>
+
+      <div class="text-card" style="margin-top:15px">
+        <p class="quote">
+          “Sometimes understanding yourself begins with
+          admitting that you don't.”
+        </p>
+      </div>
+    </section>
+
+    <!-- SOCIAL LINKS -->
+
+    <section id="connect">
+      <div class="eyebrow">10 / Elsewhere</div>
+      <h2>Find me elsewhere.</h2>
+
+      <p class="intro">Different platforms, same person.</p>
+
+      <div class="social-icons">
+
+        <a
+          href="https://www.reddit.com/u/Uchiha-_-itatchi/s/U8WJjwwanb"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Reddit"
+          title="Reddit"
+        >
+          <img
+            src="https://cdn.simpleicons.org/reddit/FF4500"
+            alt=""
+            loading="lazy"
+          >
+        </a>
+
+        <a
+          href="https://www.snapchat.com/add/anastarek2125?share_id=MBL79vSXHq8&locale=en-US"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Snapchat"
+          title="Snapchat"
+        >
+          <img
+            src="https://cdn.simpleicons.org/snapchat/FFFFFF"
+            alt=""
+            loading="lazy"
+          >
+        </a>
+
+        <a
+          href="https://www.instagram.com/_nasa_jr?dlrf=MWR4cjR4MXljbWw0eQ=="
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram"
+          title="Instagram"
+        >
+          <img
+            src="https://cdn.simpleicons.org/instagram/E4405F"
+            alt=""
+            loading="lazy"
+          >
+        </a>
+
+        <a
+          href="https://www.threads.com/@_nasa_jr"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Threads"
+          title="Threads"
+        >
+          <img
+            src="https://cdn.simpleicons.org/threads/FFFFFF"
+            alt=""
+            loading="lazy"
+          >
+        </a>
+
+        <a
+          href="https://open.spotify.com/user/31eirfaiu6522jbgmxhmrc4cuiwy?si=G7xoe6CaQYCqA8_1l8uipg&utm_source=copy-link"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Spotify"
+          title="Spotify"
+        >
+          <img
+            src="https://cdn.simpleicons.org/spotify/1DB954"
+            alt=""
+            loading="lazy"
+          >
+        </a>
+
+      </div>
+
+      <p class="intro">Random thoughts, occasionally coherent.</p>
+    </section>
+
+  </main>
+
+  <!-- SIGNATURE -->
+
+  <div class="signature">
+    <p class="signature-title">Somewhere in Between.</p>
+    <p class="signature-name">CURATED BY NASA</p>
   </div>
-</section>
 
-<section id="personal-notes">
-  <div class="eyebrow">08 / Personal Notes</div>
-  <h2>A Few Things I Believe.</h2>
-  <div class="item">
-    <p class="quote">
-      "You don't have to have everything figured out
-      to be moving forward."
-    </p>
-  </div>
-  <div class="item" style="margin-top:13px">
-    <p class="quote">
-      "Sometimes understanding yourself begins with
-      admitting that you don't."
-    </p>
-  </div>
-</section>
-  
-</main>
-<footer><span>SOMEWHERE IN BETWEEN © 2026</span><span>A PERSONAL ARCHIVE · MADE WITH INTENTION</span></footer>
-
-<section id="connect" class="socials">
-  <div class="eyebrow">09 / Elsewhere</div>
-  <h2>Find me elsewhere.</h2>
-  <p class="intro">Different platforms, same person.</p>
-
-  <div class="social-icons">
-    <a href="https://www.reddit.com/u/Uchiha-_-itatchi/s/U8WJjwwanb"
-       target="_blank" rel="noopener noreferrer"
-       aria-label="Reddit" title="Reddit">
-      <img src="https://cdn.simpleicons.org/reddit/FF4500" alt="Reddit">
-    </a>
-
-    <a href="https://www.snapchat.com/add/anastarek2125?share_id=MBL79vSXHq8&locale=en-US"
-       target="_blank" rel="noopener noreferrer"
-       aria-label="Snapchat" title="Snapchat">
-      <img src="https://cdn.simpleicons.org/snapchat/FFFFFF" alt="Snapchat">
-    </a>
-
-    <a href="https://www.instagram.com/_nasa_jr?dlrf=MWR4cjR4MXljbWw0eQ=="
-       target="_blank" rel="noopener noreferrer"
-       aria-label="Instagram" title="Instagram">
-      <img src="https://cdn.simpleicons.org/instagram/E4405F" alt="Instagram">
-    </a>
-
-    <a href="https://www.threads.com/@_nasa_jr"
-       target="_blank" rel="noopener noreferrer"
-       aria-label="Threads" title="Threads">
-      <img src="https://cdn.simpleicons.org/threads/FFFFFF" alt="Threads">
-    </a>
-
-    <a href="https://open.spotify.com/user/31eirfaiu6522jbgmxhmrc4cuiwy?si=G7xoe6CaQYCqA8_1l8uipg&utm_source=copy-link"
-       target="_blank" rel="noopener noreferrer"
-       aria-label="Spotify" title="Spotify">
-      <img src="https://cdn.simpleicons.org/spotify/1DB954" alt="Spotify">
-    </a>
-  </div>
-
-  <p class="intro">Random thoughts, occasionally coherent.</p>
-</section>
-
-
-<style>
-  .social-icons {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 18px;
-    margin: 28px 0;
-  }
-
-  .social-icons a {
-    width: 58px;
-    height: 58px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #111;
-    border: 1px solid #292929;
-    border-radius: 16px;
-    transition: transform 0.25s ease,
-                background 0.25s ease,
-                border-color 0.25s ease;
-  }
-
-  .social-icons a img {
-    width: 25px;
-    height: 25px;
-    object-fit: contain;
-  }
-
-  .social-icons a:hover {
-    transform: translateY(-5px);
-    background: #1b1b1b;
-    border-color: #777;
-  }
-
-  .social-icons a:focus-visible {
-    outline: 2px solid white;
-    outline-offset: 4px;
-  }
-</style>
-
-      <p>Random thoughts, occasionally coherent.</p>
-    </a>
-  </div>
-  </section>
-  
-<div class="signature">
-  <p class="signature-title">Somewhere in Between.</p>
-  <p class="signature-name">Curated by Nasa.</p>
-  <p class="signature-copy">
-    © 2026 · ALL THOUGHTS RESERVED
-  </p>
-</div>
-
-<style>
-  .signature {
-    text-align: center;
-    padding: 55px 20px 35px;
-    border-top: 1px solid #292929;
-    background: #090909;
-  }
-
-  .signature-title {
-    color: #ededed;
-    font-size: 20px;
-    letter-spacing: -0.5px;
-  }
-
-  .signature-name {
-    margin-top: 8px;
-    color: #c7b9a5;
-    font-size: 12px;
-    letter-spacing: 2px;
-  }
-
-  .signature-copy {
-    margin-top: 22px;
-    color: #666;
-    font-family: monospace;
-    font-size: 9px;
-    letter-spacing: 1.5px;
-  }
-</style>
+  <footer>
+    <span>SOMEWHERE IN BETWEEN © 2026</span>
+    <span>A PERSONAL ARCHIVE · MADE WITH INTENTION</span>
+  </footer>
 
 </body>
 </html>
